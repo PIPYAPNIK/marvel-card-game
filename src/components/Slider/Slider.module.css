@@ -1,4 +1,4 @@
-.section {
+.root {
   width: 100%;
 }
 
@@ -7,15 +7,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.container {
-  position: relative;
-  margin: 0 50px;
-  color: #444;
-  max-width: 1180px;
-  width: 100%;
-  overflow: hidden;
 }
 
 .sliderContent {
@@ -70,22 +61,4 @@
 .button:hover {
   background: rgba(255, 255, 255, 0.1);
   cursor: pointer;
-}
-
-@media (max-width: 1024px) {
-  .container {
-    margin: 0 25px;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    margin: 0 14px;
-  }
-}
-
-@media (max-width: 560px) {
-  .container {
-    margin: 0 8px;
-  }
 }
