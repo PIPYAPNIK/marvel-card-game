@@ -1,0 +1,19 @@
+.root {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 0.2em;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.strong {
+  font-weight: bold;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  user-select: none;
+}
