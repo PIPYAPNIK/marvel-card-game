@@ -6,17 +6,15 @@ import styles from "./Heading.module.css";
 export const Heading = ({ level = 1, className, black = false, children }) => {
   const el = `h${level}`;
 
-  if (!children) {
-    return;
-  }
-
-  return React.createElement(
-    el,
-    {
-      className: cn(styles.root, className, { [styles.black]: black }),
-    },
-    children
-  );
+  return children
+    ? React.createElement(
+        el,
+        {
+          className: cn(styles.root, className, { [styles.black]: black }),
+        },
+        children
+      )
+    : null;
 };
 
 Heading.propTypes = {

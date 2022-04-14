@@ -11,23 +11,19 @@ export const Text = ({
   italic = false,
   disabled = false,
 }) => {
-  if (!children) {
-    return;
-  }
-
-  return React.createElement(
-    element,
-    {
-      className: cn(
-        styles.root,
-        className,
-        { [styles.strong]: strong },
-        { [styles.italic]: italic },
-        { [styles.disabled]: disabled }
-      ),
-    },
-    children
-  );
+  return children
+    ? React.createElement(
+        element,
+        {
+          className: cn(styles.root, className, {
+            [styles.strong]: strong,
+            [styles.italic]: italic,
+            [styles.disabled]: disabled,
+          }),
+        },
+        children
+      )
+    : null;
 };
 
 Text.propTypes = {
