@@ -1,5 +1,5 @@
 import { Container } from "../Container";
-import styles from "./Header.module.css";
+import styles from "./Header.module.scss";
 import logoPng from "../../assets/logo.png";
 
 const MENU = ["Menu 1", "Menu 2", "Menu 3", "Menu 4"];
@@ -7,8 +7,8 @@ const MENU = ["Menu 1", "Menu 2", "Menu 3", "Menu 4"];
 export const Header = () => {
   return (
     <header className={styles.root}>
-      <Container className={styles.headerContainer}>
-        <div className={styles.header}>
+      <div className={styles.header}>
+        <Container className={styles.headerContainer}>
           <div className={styles.logo}>
             <img src={logoPng} alt="Logo" />
           </div>
@@ -19,8 +19,8 @@ export const Header = () => {
               </li>
             ))}
           </ul>
-        </div>
-      </Container>
+        </Container>
+      </div>
     </header>
   );
 };
