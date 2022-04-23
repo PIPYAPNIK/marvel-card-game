@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import cn from "classnames";
-import styles from "./Text.module.css";
+import styles from "./Text.module.scss";
 
 export const Text = ({
   children,
