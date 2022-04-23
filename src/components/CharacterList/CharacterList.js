@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { Container } from "../Container";
 import { Heading } from "../Heading";
 import { CharacterCard } from "./CharacterCard";
@@ -75,22 +75,20 @@ const CHARACTERS = [
 
 export const CharacterList = () => {
   const [characters, setCharacters] = useState(CHARACTERS);
-  const handleLike = useCallback(
-    (id) => {
-      const cloneCharacters = [...characters];
-      const characterIndex = cloneCharacters.findIndex(
-        (character) => character.id === id
-      );
-      const updatedCharacter = {
-        ...cloneCharacters[characterIndex],
-        isLike: !cloneCharacters[characterIndex].isLike,
-      };
-      cloneCharacters.splice(characterIndex, 1, updatedCharacter);
+  const handleLike = (id) => {
+    setCharacters((prevState) =>
+      prevState.map((item) => {
+        if (item.id === id) {
+          return {
+            ...item,
+            isLike: !item.isLike,
+          };
+        }
 
-      setCharacters(cloneCharacters);
-    },
-    [characters, setCharacters]
-  );
+        return item;
+      })
+    );
+  };
 
   return (
     <section className={styles.root}>

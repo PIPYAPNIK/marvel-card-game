@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import { Heading } from "../../Heading";
@@ -15,9 +14,9 @@ export const CharacterCard = ({
   isLike,
   onLike,
 }) => {
-  const handleLike = useCallback(() => {
+  const handleLike = () => {
     onLike(id);
-  }, [id, onLike]);
+  };
 
   return (
     <div className={styles.root}>
