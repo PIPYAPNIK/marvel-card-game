@@ -1,8 +1,11 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
+
 import { Heading } from "../../Heading";
 import { Text } from "../../Text";
+
 import styles from "./CharacterCard.module.scss";
+
 import { ReactComponent as Heart } from "./assets/heart.svg";
 
 export const CharacterCard = ({
@@ -13,9 +16,14 @@ export const CharacterCard = ({
   humanName,
   isLike,
   onLike,
+  onReadBio,
 }) => {
   const handleLike = () => {
     onLike(id);
+  };
+
+  const handleReadBio = () => {
+    onReadBio(id);
   };
 
   return (
@@ -39,7 +47,9 @@ export const CharacterCard = ({
             <Heart />
           </div>
           <div className={styles.readBio}>
-            <a href="#">Read bio</a>
+            <a href="#" onClick={handleReadBio}>
+              Read bio
+            </a>
           </div>
         </div>
       </div>
@@ -54,4 +64,6 @@ CharacterCard.propTypes = {
   imageUrl: PropTypes.string,
   humanName: PropTypes.string,
   isLike: PropTypes.bool,
+  onLike: PropTypes.func,
+  onReadBio: PropTypes.func,
 };

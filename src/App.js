@@ -1,14 +1,19 @@
-import { CharacterList } from "./components/CharacterList";
+import { useState } from "react";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
-import { Slider } from "./components/Slider";
+import { Biography } from "./pages/Biography";
+import { Main } from "./pages/Main";
 
 const App = () => {
+  const [activeId, setActiveId] = useState(null);
   return (
     <>
       <Header />
-      <Slider />
-      <CharacterList />
+      {activeId ? (
+        <Biography id={activeId} setActiveId={setActiveId} />
+      ) : (
+        <Main setActiveId={setActiveId} />
+      )}
       <Footer />
     </>
   );
