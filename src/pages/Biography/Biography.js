@@ -1,43 +1,41 @@
-import PropTypes from "prop-types";
+import { useParams } from "react-router-dom";
 
 import { Heading } from "../../components/Heading";
 import { Container } from "../../components/Container";
 import { Text } from "../../components/Text";
-import { Button } from "../../components/Button";
 
-import { BIO } from "../../data";
+import { BIO } from "../../constants/bio";
 
 import styles from "./Biography.module.scss";
 
-export const Biography = ({ id, onBackClick }) => {
+export const Biography = () => {
+  const { id } = useParams();
+
   return (
     <div className={styles["root"]}>
       <Container className={styles["wrapper"]}>
-        <Button style="dark" onClick={onBackClick}>
-          Go back
-        </Button>
-        {BIO[id].map((item) => {
+        {BIO[id].map((item, index) => {
           switch (item.type) {
             case "h1":
               return (
-                <Heading level={1} key={item.text}>
+                <Heading level={1} key={index}>
                   {item.text}
                 </Heading>
               );
             case "h2":
               return (
-                <Heading level={2} key={item.text}>
+                <Heading level={2} key={index}>
                   {item.text}
                 </Heading>
               );
             case "paragraph":
               return (
-                <Text element="p" key={item.text}>
+                <Text element="p" key={index}>
                   {item.text}
                 </Text>
               );
             case "img":
-              return <img key={item.src} src={item.src} alt={item.src} />;
+              return <img key={index} src={item.src} alt={item.src} />;
             default:
               return null;
           }
@@ -45,9 +43,4 @@ export const Biography = ({ id, onBackClick }) => {
       </Container>
     </div>
   );
-};
-
-Biography.propTypes = {
-  id: PropTypes.number.isRequired,
-  onBackClick: PropTypes.func,
 };
