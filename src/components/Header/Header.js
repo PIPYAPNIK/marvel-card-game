@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import classNames from "classnames";
 
 import { Container } from "../Container";
@@ -11,21 +11,17 @@ const MENU = ["Menu 1", "Menu 2", "Menu 3", "Menu 4"];
 const SMALL_SCROLL_SIZE = 60;
 
 export const Header = () => {
-  const checkIsSmall = useCallback(
-    () => window.scrollY > SMALL_SCROLL_SIZE,
-    []
-  );
-  const [isSmall, setSmall] = useState(checkIsSmall);
+  const [isSmall, setSmall] = useState(window.scrollY > SMALL_SCROLL_SIZE);
 
   useEffect(() => {
-    const onScroll = () => setSmall(checkIsSmall);
+    const onScroll = () => setSmall(window.scrollY > SMALL_SCROLL_SIZE);
 
     document.addEventListener("scroll", onScroll);
 
     return () => {
       document.removeEventListener("scroll", onScroll);
     };
-  }, [checkIsSmall]);
+  });
 
   return (
     <header className={styles.root}>

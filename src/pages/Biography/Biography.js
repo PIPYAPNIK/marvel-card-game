@@ -9,42 +9,45 @@ import { BIO } from "../../data";
 
 import styles from "./Biography.module.scss";
 
-export const Biography = ({ id, setActiveId }) => {
-  const handleGoBack = () => setActiveId(null);
-
+export const Biography = ({ id, onBackClick }) => {
   return (
-    <Container className={styles["root"]}>
-      <Button onClick={handleGoBack} style="dark">
-        Go back
-      </Button>
-      {BIO[id].map((item) => {
-        if (item.type === "h1" || item.type === "h2") {
-          return (
-            <Heading key={item.text} level={item.type === "h1" ? 1 : 2}>
-              {item.text}
-            </Heading>
-          );
-        }
-
-        if (item.type === "paragraph") {
-          return (
-            <Text key={item.text} element="p">
-              {item.text}
-            </Text>
-          );
-        }
-
-        if (item.type === "img") {
-          return <img key={item.src} src={item.src} alt={item.src} />;
-        }
-
-        return null;
-      })}
-    </Container>
+    <div className={styles["root"]}>
+      <Container className={styles["wrapper"]}>
+        <Button style="dark" onClick={onBackClick}>
+          Go back
+        </Button>
+        {BIO[id].map((item) => {
+          switch (item.type) {
+            case "h1":
+              return (
+                <Heading level={1} key={item.text}>
+                  {item.text}
+                </Heading>
+              );
+            case "h2":
+              return (
+                <Heading level={2} key={item.text}>
+                  {item.text}
+                </Heading>
+              );
+            case "paragraph":
+              return (
+                <Text element="p" key={item.text}>
+                  {item.text}
+                </Text>
+              );
+            case "img":
+              return <img key={item.src} src={item.src} alt={item.src} />;
+            default:
+              return null;
+          }
+        })}
+      </Container>
+    </div>
   );
 };
 
 Biography.propTypes = {
   id: PropTypes.number.isRequired,
-  setActiveId: PropTypes.func,
+  onBackClick: PropTypes.func,
 };

@@ -19,11 +19,11 @@ export const CharacterCard = ({
   onReadBio,
 }) => {
   const handleLike = () => {
-    onLike(id);
+    onLike && onLike(id);
   };
 
   const handleReadBio = () => {
-    onReadBio(id);
+    onReadBio && onReadBio(id);
   };
 
   return (

@@ -5,9 +5,7 @@ import styles from "./Button.module.scss";
 
 export const Button = ({ style = "light", className, onClick, children }) => {
   const handleClick = () => {
-    if (onClick) {
-      onClick();
-    }
+    onClick && onClick();
   };
   return (
     <button
