@@ -1,15 +1,14 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
 
 import { Container } from "../Container";
 import { Heading } from "../Heading";
 import { CharacterCard } from "./CharacterCard";
 
-import { CHARACTERS } from "../../data";
+import { CHARACTERS } from "../../constants/characters";
 
 import styles from "./CharacterList.module.scss";
 
-export const CharacterList = ({ setActiveId }) => {
+export const CharacterList = () => {
   const [characters, setCharacters] = useState(CHARACTERS);
   const handleLike = (id) => {
     setCharacters((prevState) =>
@@ -44,15 +43,10 @@ export const CharacterList = ({ setActiveId }) => {
               humanName={character.humanName}
               isLike={character.isLike}
               onLike={handleLike}
-              onReadBio={setActiveId}
             />
           ))}
         </div>
       </Container>
     </section>
   );
-};
-
-CharacterList.propTypes = {
-  setActiveId: PropTypes.func,
 };

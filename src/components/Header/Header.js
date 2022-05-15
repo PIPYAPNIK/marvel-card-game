@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import classNames from "classnames";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Container } from "../Container";
 
@@ -7,11 +8,21 @@ import styles from "./Header.module.scss";
 
 import logoPng from "../../assets/logo.png";
 
-const MENU = ["Menu 1", "Menu 2", "Menu 3", "Menu 4"];
+const MENU = [
+  { name: "Main", url: "/" },
+  { name: "Characters", url: "/characters" },
+  { name: "About Game", url: "/about" },
+  { name: "Contacts", url: "/contacts" },
+];
 const SMALL_SCROLL_SIZE = 60;
 
 export const Header = () => {
+  const navigate = useNavigate();
   const [isSmall, setSmall] = useState(window.scrollY > SMALL_SCROLL_SIZE);
+
+  const handleLogoClick = () => {
+    navigate("/");
+  };
 
   useEffect(() => {
     const onScroll = () => setSmall(window.scrollY > SMALL_SCROLL_SIZE);
@@ -31,13 +42,13 @@ export const Header = () => {
         })}
       >
         <Container className={styles.headerContainer}>
-          <div className={styles.logo}>
+          <div className={styles.logo} onClick={handleLogoClick}>
             <img src={logoPng} alt="Logo" />
           </div>
           <ul className={styles.nav}>
-            {MENU.map((el) => (
-              <li key={el}>
-                <a href="#">{el}</a>
+            {MENU.map(({ name, url }) => (
+              <li key={name}>
+                <Link to={url}>{name}</Link>
               </li>
             ))}
           </ul>

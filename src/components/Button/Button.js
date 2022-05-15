@@ -9,11 +9,7 @@ export const Button = ({ style = "light", className, onClick, children }) => {
   };
   return (
     <button
-      className={classNames(
-        styles["root"],
-        styles[`theme-${style}`],
-        className
-      )}
+      className={classNames(styles.root, styles[`theme-${style}`], className)}
       onClick={handleClick}
     >
       {children}

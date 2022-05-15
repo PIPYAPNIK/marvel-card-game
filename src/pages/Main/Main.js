@@ -1,10 +1,11 @@
-import PropTypes from "prop-types";
 import { CharacterList } from "../../components/CharacterList";
+import { Slider } from "../../components/Slider";
 
-export const Main = ({ setActiveId }) => {
-  return <CharacterList setActiveId={setActiveId} />;
-};
-
-Main.propTypes = {
-  setActiveId: PropTypes.func,
+export const Main = () => {
+  return (
+    <>
+      <Slider />
+      <CharacterList />
+    </>
+  );
 };
