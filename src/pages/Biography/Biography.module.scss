@@ -16,3 +16,28 @@
     max-width: 100%;
   }
 }
+
+.linkWrapper {
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    .link {
+      opacity: 1;
+    }
+  }
+
+  .link {
+    opacity: 0;
+    transition: 0.3s;
+
+    & > svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  h2 {
+    margin-right: 5px;
+  }
+}

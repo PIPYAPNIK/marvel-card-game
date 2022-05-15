@@ -42,7 +42,7 @@ export const CharacterCard = ({
           >
             <Heart />
           </div>
-          <Link className={styles.readBio} to={`/bio/${id}`}>
+          <Link className={styles.readBio} to={`/characters/${id}`}>
             Read bio
           </Link>
         </div>

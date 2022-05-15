@@ -27,7 +27,7 @@ export const CharacterList = () => {
 
   return (
     <section className={styles.root}>
-      <Container>
+      <Container className={styles.container}>
         <div className={styles.characterListTitle}>
           <Heading backLine>Marvel cards</Heading>
           <Heading level={2}>Collect your best five</Heading>

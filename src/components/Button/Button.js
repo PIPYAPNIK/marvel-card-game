@@ -3,13 +3,13 @@ import classNames from "classnames";
 
 import styles from "./Button.module.scss";
 
-export const Button = ({ style = "light", className, onClick, children }) => {
+export const Button = ({ color = "light", className, onClick, children }) => {
   const handleClick = () => {
     onClick && onClick();
   };
   return (
     <button
-      className={classNames(styles.root, styles[`theme-${style}`], className)}
+      className={classNames(styles.root, styles[`theme-${color}`], className)}
       onClick={handleClick}
     >
       {children}
@@ -18,7 +18,7 @@ export const Button = ({ style = "light", className, onClick, children }) => {
 };
 
 Button.propTypes = {
-  style: PropTypes.oneOf(["light", "dark"]),
+  color: PropTypes.oneOf(["light", "dark"]),
   className: PropTypes.string,
   onClick: PropTypes.func,
   children: PropTypes.node.isRequired,

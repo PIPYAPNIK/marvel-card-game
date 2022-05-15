@@ -5,6 +5,7 @@ import styles from "./Heading.module.scss";
 
 export const Heading = ({
   level = 1,
+  id,
   className,
   black = false,
   backLine = false,
@@ -20,6 +21,7 @@ export const Heading = ({
             [styles.black]: black,
             [styles.backLine]: backLine,
           }),
+          id: id,
         },
         children
       )
@@ -29,6 +31,7 @@ export const Heading = ({
 Heading.propTypes = {
   level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
   className: PropTypes.string,
+  id: PropTypes.string,
   black: PropTypes.bool,
   backLine: PropTypes.bool,
   children: PropTypes.node.isRequired,

@@ -1,4 +1,3 @@
-import { Container } from "../../components/Container";
 import { Heading } from "../../components/Heading";
 import { Text } from "../../components/Text";
 
@@ -8,7 +7,7 @@ import styles from "./About.module.scss";
 
 export const About = () => {
   return (
-    <Container className={styles.root}>
+    <>
       <Heading className={styles.title}>About game</Heading>
       {ABOUT.map((el, index) => {
         return (
@@ -17,6 +16,6 @@ export const About = () => {
           </Text>
         );
       })}
-    </Container>
+    </>
   );
 };
