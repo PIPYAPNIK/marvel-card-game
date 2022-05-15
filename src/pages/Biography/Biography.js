@@ -12,8 +12,8 @@ export const Biography = () => {
   const { id } = useParams();
 
   return (
-    <div className={styles["root"]}>
-      <Container className={styles["wrapper"]}>
+    <div className={styles.root}>
+      <Container className={styles.wrapper}>
         {BIO[id].map((item, index) => {
           switch (item.type) {
             case "h1":

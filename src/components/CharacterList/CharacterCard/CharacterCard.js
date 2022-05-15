@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { Heading } from "../../Heading";
 import { Text } from "../../Text";
@@ -18,14 +18,8 @@ export const CharacterCard = ({
   isLike,
   onLike,
 }) => {
-  const navigate = useNavigate();
-
   const handleLike = () => {
     onLike && onLike(id);
-  };
-
-  const handleReadBio = () => {
-    navigate(`/bio/${id}`);
   };
 
   return (
@@ -48,9 +42,9 @@ export const CharacterCard = ({
           >
             <Heart />
           </div>
-          <div className={styles.readBio} onClick={handleReadBio}>
+          <Link className={styles.readBio} to={`/bio/${id}`}>
             Read bio
-          </div>
+          </Link>
         </div>
       </div>
     </div>
