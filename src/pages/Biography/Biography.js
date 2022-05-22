@@ -5,7 +5,6 @@ import {
   useNavigate,
   useParams,
 } from "react-router-dom";
-import { useEffect } from "react";
 
 import { Heading } from "../../components/Heading";
 import { Container } from "../../components/Container";
@@ -26,18 +25,6 @@ export const Biography = () => {
   const handleGoBack = () => {
     navigate(-1);
   };
-
-  useEffect(() => {
-    const cleanId = location.hash.replace(/#/g, "");
-    const element = document.getElementById(cleanId);
-
-    if (element) {
-      element.scrollIntoView({
-        block: "center",
-        behavior: "smooth",
-      });
-    }
-  }, [location.hash]);
 
   if (!BIO[id]) {
     return <Navigate to="/characters" />;

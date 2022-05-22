@@ -12,8 +12,20 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    if (location.hash) {
+      const cleanId = location.hash.replace(/#/g, "");
+      const element = document.getElementById(cleanId);
+
+      if (element) {
+        element.scrollIntoView({
+          block: "center",
+          behavior: "smooth",
+        });
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.hash, location.pathname]);
 
   return (
     <Routes>
