@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import classNames from "classnames";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { Container } from "../Container";
 
@@ -48,7 +48,14 @@ export const Header = () => {
           <ul className={styles.nav}>
             {MENU.map(({ name, url }) => (
               <li key={name}>
-                <Link to={url}>{name}</Link>
+                <NavLink
+                  to={url}
+                  className={({ isActive }) => {
+                    return isActive ? styles.active : null;
+                  }}
+                >
+                  {name}
+                </NavLink>
               </li>
             ))}
           </ul>

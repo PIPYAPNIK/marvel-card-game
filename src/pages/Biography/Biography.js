@@ -1,19 +1,41 @@
-import { useParams } from "react-router-dom";
+import {
+  Link,
+  Navigate,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 
 import { Heading } from "../../components/Heading";
 import { Container } from "../../components/Container";
 import { Text } from "../../components/Text";
+import { Button } from "../../components/Button";
 
 import { BIO } from "../../constants/bio";
 
 import styles from "./Biography.module.scss";
 
+import { ReactComponent as IconLink } from "../../assets/link.svg";
+
 export const Biography = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
+
+  if (!BIO[id]) {
+    return <Navigate to="/characters" />;
+  }
 
   return (
     <div className={styles.root}>
       <Container className={styles.wrapper}>
+        <Button color="dark" onClick={handleGoBack}>
+          Go back
+        </Button>
         {BIO[id].map((item, index) => {
           switch (item.type) {
             case "h1":
@@ -24,9 +46,17 @@ export const Biography = () => {
               );
             case "h2":
               return (
-                <Heading level={2} key={index}>
-                  {item.text}
-                </Heading>
+                <div className={styles.linkWrapper} key={index}>
+                  <Heading id={item.text.replace(/ /g, "_")} level={2}>
+                    {item.text}
+                  </Heading>
+                  <Link
+                    className={styles.link}
+                    to={`${location.pathname}#${item.text.replace(/ /g, "_")}`}
+                  >
+                    <IconLink />
+                  </Link>
+                </div>
               );
             case "paragraph":
               return (
